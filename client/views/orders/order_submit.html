@@ -1,0 +1,48 @@
+<template name="orderSubmit">
+	<form class="main">
+		<h3>
+			What would you like us to make for you?
+		</h3>
+		<p>
+			If you'd like a dish prepared a certain way,
+			please specify a recipe, or give us a link to your favourite recipe online.
+			Otherwise, we will do our best to find a delicious recipe for you.
+		</p>
+		{{#each tempFood}}
+			{{>foodForm}}
+		{{/each}}
+
+		<div class="control-group">
+			<label class="control-label" for="newDishName">Dish Name:</label>
+			<div class="controls">
+				<input id="newDishName" type="text" value="" placeholder="Dish Name" class="form-control"/>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="newRecipe">Recipe:</label>
+			<div class="controls">
+				<textarea id="newRecipe" placeholder="Recipe" class="form-control" rows="3"></textarea>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<div class="controls">
+				<input name="addDish" type="button" value="Add another dish" class="btn addDish"/>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label class="control-label" for="restrictions">Please let us know about any allergies and special dietary restrictions:</label>
+			<div class="controls">
+				<textarea name="restrictions" placeholder="Allergies and dietary restrictions" class="form-control" rows="2"></textarea>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<div class="controls">
+				<input type="submit" value="Submit" class="btn btn-primary"/>
+			</div>
+		</div>
+	</form>
+</template>

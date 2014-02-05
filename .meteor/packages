@@ -12,3 +12,5 @@ accounts-ui-bootstrap-dropdown
 accounts-password
 bootstrap
 email
+underscore
+jquery

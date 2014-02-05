@@ -1,0 +1,15 @@
+<template name="foodForm">
+	<div class="control-group">
+		<label class="control-label" for="dishName">Dish Name:</label>
+		<div class="controls">
+			<input name="dishName" type="text" value="{{name}}" placeholder="Dish Name" class="form-control" disabled/>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="recipe">Recipe:</label>
+		<div class="controls">
+			<textarea name="recipe" placeholder="Recipe" class="form-control" rows="3" disabled>{{recipe}}</textarea>
+		</div>
+	</div>
+</template>

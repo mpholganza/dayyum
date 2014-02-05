@@ -1,0 +1,9 @@
+<template name="orderConfirmation">
+	<h3>
+		Confirm your order
+	</h3>
+	{{#each tempFood}}
+		{{>foodForm}}
+	{{/each}}
+	<a href="{{pathFor 'home'}}" class="btn confirmOrder">Order now!</a>
+</template>
