@@ -26,6 +26,11 @@ Template.orderSubmit.events({
 			recipe: $('#newRecipe').val()
 		};
 		
+		if (food.name.length < 1) {
+			alert('Please enter a dish name.');
+			return;
+		}
+		
 		// reset add dish form
 		$('#newDishName').val('');
 		$('#newRecipe').val('');
