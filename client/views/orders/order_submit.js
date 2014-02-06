@@ -1,9 +1,12 @@
 // Temporary meteor collection containing list of requested food
-TempFood = new Meteor.Collection;
+TempFood = new Meteor.Collection(null);
+Session.set("addingNewFoodItem", true);
 
 // Reset tempFood collection
 resetTempFood = function() {
 	TempFood.remove({});
+	Session.set("addingNewFoodItem", true);
+	Session.set("selectedFoodOrderItem", undefined);
 };
 
 resetTempFood();
@@ -12,8 +15,12 @@ Template.orderSubmit.tempFood = function() {
 	return TempFood.find({});
 };
 
+Template.orderSubmit.showNewFoodItemForm = function() {
+	return (Session.get("addingNewFoodItem"));
+};
+
 Template.orderSubmit.events({
-	'click .addDish': function(e) {
+	'click .addDish': function() {
 		var food = {
 			name: $('#newDishName').val(),
 			recipe: $('#newRecipe').val()
@@ -22,13 +29,16 @@ Template.orderSubmit.events({
 		// reset add dish form
 		$('#newDishName').val('');
 		$('#newRecipe').val('');
-		/*
-		if(_.contains(_.values(food), null)) {
-			alert('Please complete the dish name and recipe information.');
-			return;
-		}
-		*/
+
 		TempFood.insert(food);
+		Session.set("addingNewFoodItem", false);
+		
+		// TODO: Move focus to addAnotherDish button for easy keyboard input
+		// $('#addAnotherDish').focus();
+	},
+	'click .addAnotherDish': function() {
+		Session.set("addingNewFoodItem", true);
+		Session.set("selectedFoodOrderItem", undefined);
 	},
 	'submit form': function(e) {
 		e.preventDefault();
@@ -37,14 +47,7 @@ Template.orderSubmit.events({
 			food: food,
 			restrictions: $(e.target).find('[name=restrictions]').val()
 		}
-		// validate food
-		/*
-		if (_.where(food, {name: '', recipe: ''}).length > 0) {
-			alert('hi');
-			throw new Meteor.Error(403, "One or more of the recipes has a missing name or recipe");
-		}
-		*/
-		
+
 		Router.go('orderConfirmation', order);
 	}
 });

@@ -1,0 +1,10 @@
+<template name="foodOrderItem">
+	<li>
+	{{#if selectedFoodOrderItem}}
+		{{>foodOrderForm}}
+	{{else}}
+		<div class="foodOrderItems">{{name}}</div>
+	{{/if}}
+	</li>
+</template>
+

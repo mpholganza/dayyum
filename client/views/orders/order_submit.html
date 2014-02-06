@@ -8,10 +8,13 @@
 			please specify a recipe, or give us a link to your favourite recipe online.
 			Otherwise, we will do our best to find a delicious recipe for you.
 		</p>
+		<ol>
 		{{#each tempFood}}
-			{{>foodForm}}
+			{{>foodOrderItem}}
 		{{/each}}
+		</ol>
 
+		{{#if showNewFoodItemForm}}
 		<div class="control-group">
 			<label class="control-label" for="newDishName">Dish Name:</label>
 			<div class="controls">
@@ -28,9 +31,16 @@
 		
 		<div class="control-group">
 			<div class="controls">
-				<input name="addDish" type="button" value="Add another dish" class="btn addDish"/>
+				<input name="addDish" type="button" value="Add dish" class="btn addDish"/>
 			</div>
 		</div>
+		{{else}}
+		<div class="control-group">
+			<div class="controls">
+				<input name="addAnotherDish" type="button" value="Add another dish" class="btn addAnotherDish"/>
+			</div>
+		</div>	
+		{{/if}}
 		
 		<div class="control-group">
 			<label class="control-label" for="restrictions">Please let us know about any allergies and special dietary restrictions:</label>
