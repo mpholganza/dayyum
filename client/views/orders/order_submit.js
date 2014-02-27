@@ -9,8 +9,6 @@ resetTempFood = function() {
 	Session.set("selectedFoodOrderItem", undefined);
 };
 
-resetTempFood();
-
 Template.orderSubmit.tempFood = function() {
 	return TempFood.find({});
 };
@@ -47,13 +45,24 @@ Template.orderSubmit.events({
 	},
 	'submit form': function(e) {
 		e.preventDefault();
+
 		var food = TempFood.find({}).fetch();
 		var order = {
-			food: food,
-			restrictions: $(e.target).find('[name=restrictions]').val()
-		}
+			dishes: food,
+			restrictions: $(e.target).find('[name=restrictions]').val(),
+			time: new Date().getTime()
+		};
+		
+		Meteor.call('submitOrder', order, function(error, orderId) {
+			alert(error);
+			alert(orderId);
+			if (error) {
+				// TODO: error handling
+				return;
+			}
 
-		Router.go('orderConfirmation', order);
+			Router.go('orderConfirmation', {_id: orderId});
+		});
 	}
 });
 

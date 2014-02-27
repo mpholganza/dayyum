@@ -5,5 +5,11 @@
 	{{#each tempFood}}
 		{{>foodOrderConfirmationItem}}
 	{{/each}}
+	<div>
+		{{timeFormatted}}
+	</div>
+	<div>
+		{{restrictions}}
+	</div>
 	<a href="{{pathFor 'home'}}" class="btn confirmOrder">Order now!</a>
 </template>
