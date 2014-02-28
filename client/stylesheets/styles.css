@@ -1,4 +1,4 @@
-.grid-block, .main, .food-item, .comments li, .comment-form {
+.grid-block, .main, .food-item, .order-item, .comments li, .comment-form {
     background: #fff;
     border-radius: 3px;
     padding: 10px;
@@ -57,6 +57,7 @@ body {
     float: right;
     margin-top: 7px;
 }
+
 .comments {
     list-style-type: none;
     margin: 0;

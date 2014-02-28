@@ -6,7 +6,8 @@ Order schema
 userid: id,
 dishes: [dish1, dish2, ... ],
 restrictions: 'vegetarian with a peanut allergy',
-time: <schema still TODO>
+time: <schema still TODO>,
+submitted: time ordered
 }
 
 Permissions:
@@ -33,7 +34,7 @@ Meteor.methods({
 		}
 		
 		var order = _.extend(_.pick(orderAttributes,
-			'time', 'restrictions'), {
+			'time', 'restrictions', 'amountInCents'), {
 				userid: user._id,
 				submitted: new Date().getTime()
 			}

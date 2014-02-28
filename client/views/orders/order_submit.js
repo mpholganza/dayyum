@@ -50,18 +50,17 @@ Template.orderSubmit.events({
 		var order = {
 			dishes: food,
 			restrictions: $(e.target).find('[name=restrictions]').val(),
-			time: new Date().getTime()
+			time: new Date().getTime(),
+			amountInCents: 1000
 		};
 		
 		Meteor.call('submitOrder', order, function(error, orderId) {
-			alert(error);
-			alert(orderId);
 			if (error) {
 				// TODO: error handling
 				return;
 			}
 
-			Router.go('orderConfirmation', {_id: orderId});
+			Router.go('orderBilling', {_id: orderId});
 		});
 	}
 });

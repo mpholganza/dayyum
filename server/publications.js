@@ -13,6 +13,10 @@ Meteor.publish('orderFood', function(orderId) {
 Order Publications
 */
 
+Meteor.publish('allOrders', function() {
+	return Orders.find({});
+});
+
 Meteor.publish('userOrders', function() {
 	return Orders.find({userid:this.userId});
 });
