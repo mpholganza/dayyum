@@ -10,11 +10,10 @@
 			time:{{submittedFormatted}}
 		</div>
 		<div>
-			<a href="https://manage.stripe.com/test/payments/{{stripeChargeId}}">stripeChargeId:{{stripeChargeId}}</a>
-		</div>
-		<div>
 		{{#if paid}}
-			Paid
+		<div>
+			Paid: <a href="https://manage.stripe.com/test/payments/{{stripeChargeId}}">stripeChargeId: {{stripeChargeId}}</a>
+		</div>
 		{{else}}
 			<input type="submit" value="Charge card" class="btn btn-primary charge-button"/>
 		{{/if}}
