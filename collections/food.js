@@ -22,7 +22,6 @@ Meteor.methods({
 		});
 		
 		var foodId = Food.insert(food);
-		console.log('new food: ' + foodId);
 		return foodId;
 	}
 });
