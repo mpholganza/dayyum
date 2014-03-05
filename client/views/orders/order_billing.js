@@ -9,13 +9,14 @@ var stripeResponseHandler = function(status, response) {
     // token contains id, last4, and card type
     var token = response.id;
 		
-		Meteor.call('saveStripeToken', function(error, response) {
+		Meteor.call('saveStripeToken', token, function(error, response) {
 			if (error) {
 		    $form.find('.payment-errors').text(error.message);
 		    $form.find('button').prop('disabled', false);
 				return;
 			}
 
+			// TODO: FIX this: 'this' is null in this context
 			Router.go('orderConfirmation', {_id: this._id});
 		});
   }
@@ -33,8 +34,6 @@ Template.orderBilling.events({
 		Stripe.card.createToken($form, stripeResponseHandler);
 
 		//Router.go('orderConfirmation', {_id: this._id});
-
-		// Prevent the form from submitting with the default action
 		return false;
 	}
 });

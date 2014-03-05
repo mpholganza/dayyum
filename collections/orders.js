@@ -35,7 +35,7 @@ Meteor.methods({
 		
 		var order = _.extend(_.pick(orderAttributes,
 			'time', 'restrictions', 'amountInCents'), {
-				userid: user._id,
+				userId: user._id,
 				submitted: new Date().getTime()
 			}
 		);

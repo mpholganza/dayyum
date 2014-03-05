@@ -1,14 +1,23 @@
 <template name="orderItem">
   <div class="order-item">
 		<div>
-			user:{{userid}}
+			user:{{userId}}
 		</div>
 		<div>
 			amount in cents:{{amountInCents}}
 		</div>
 		<div>
-			time:{{submitted}}
+			time:{{submittedFormatted}}
 		</div>
-		<input type="submit" value="Charge card" class="btn btn-primary"/>
+		<div>
+			<a href="https://manage.stripe.com/test/payments/{{stripeChargeId}}">stripeChargeId:{{stripeChargeId}}</a>
+		</div>
+		<div>
+		{{#if paid}}
+			Paid
+		{{else}}
+			<input type="submit" value="Charge card" class="btn btn-primary charge-button"/>
+		{{/if}}
+		</div>
   </div>
 </template>

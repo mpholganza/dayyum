@@ -1,6 +1,19 @@
 Template.orderItem.events({
-	'click .order-item': function() {
-
+	'click .charge-button': function(e) {
+		$(e.target).prop('disabled', true);
+		Meteor.call('chargeCard', this._id, function(error, response) {
+			if (error) {
+				DebugInfo = error;
+				alert(error.message);
+				return;
+			}
+		});
 	}
 });
 
+Template.orderItem.helpers({
+	submittedFormatted: function() {
+		var submitted = new Date(this.submitted);
+		return submitted.toString();
+	},
+});
