@@ -1,5 +1,5 @@
-Template.orderConfirmation.tempFood = function() {
-	return Food.find({});
+Template.orderConfirmation.orderFood = function() {
+	return Food.find();
 };
 
 Template.orderConfirmation.events({
