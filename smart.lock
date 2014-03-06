@@ -4,7 +4,8 @@
     "basePackages": {
       "iron-router": {},
       "accounts-ui-bootstrap-dropdown": {},
-      "stripe": {}
+      "stripe": {},
+      "errors": {}
     },
     "packages": {
       "iron-router": {
@@ -21,6 +22,11 @@
         "git": "https://github.com/appleifreak/stripe-meteor.git",
         "tag": "v1.5.1",
         "commit": "76e270b78f5a48017e453f13c544d071cdfefdee"
+      },
+      "errors": {
+        "git": "https://github.com/tmeasday/meteor-errors.git",
+        "tag": "v0.2.0",
+        "commit": "b7cc525c19defe2dc744e8e34d1328b430f3e03a"
       }
     }
   }
