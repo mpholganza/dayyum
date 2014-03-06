@@ -12,7 +12,7 @@
 		<div>
 		{{#if paid}}
 		<div>
-			Paid: <a href="https://manage.stripe.com/test/payments/{{stripeChargeId}}">stripeChargeId: {{stripeChargeId}}</a>
+			Paid stripeChargeId: <a href="https://manage.stripe.com/test/payments/{{stripeChargeId}}">{{stripeChargeId}}</a>
 		</div>
 		{{else}}
 			<input type="submit" value="Charge card" class="btn btn-primary charge-button"/>
