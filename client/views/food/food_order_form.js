@@ -3,7 +3,8 @@ Template.foodOrderForm.events({
 		var dishName = $(e.target).val();
 		
 		if (dishName.length < 1) {
-			alert("Please specify a dish name.");
+			Erros.clearSeen();
+			Errors.throw("Can't have an empty dish name. Using old name.");
 			return;
 		}
 		

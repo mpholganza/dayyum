@@ -3,8 +3,7 @@ Template.orderItem.events({
 		$(e.target).prop('disabled', true);
 		Meteor.call('chargeCard', this._id, function(error, response) {
 			if (error) {
-				DebugInfo = error;
-				alert(error.message);
+				Errors.throw(error.message);
 				return;
 			}
 		});

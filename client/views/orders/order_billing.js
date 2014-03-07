@@ -13,7 +13,8 @@ Template.orderBilling.events({
 			//var $form = $('#payment-form');
 			if (response.error) {
 				// Show the errors on the form
-				$form.find('.payment-errors').text(response.error.message);
+				Errors.clearSeen();
+				Errors.throw(response.error.message);
 				$form.find('button').prop('disabled', false);
 			} else {
 				// token contains id, last4, and card type
@@ -21,7 +22,7 @@ Template.orderBilling.events({
 
 				Meteor.call('saveStripeToken', token, function(error, response) {
 					if (error) {
-						$form.find('.payment-errors').text(error.message);
+						Errors.throw(error.message);
 						$form.find('button').prop('disabled', false);
 						return;
 					}

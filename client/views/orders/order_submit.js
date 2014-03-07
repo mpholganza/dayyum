@@ -25,7 +25,8 @@ Template.orderSubmit.events({
 		};
 		
 		if (food.name.length < 1) {
-			alert('Please enter a dish name.');
+			Errors.clearSeen();
+			Errors.throw('Please enter a dish name.');
 			return;
 		}
 		
